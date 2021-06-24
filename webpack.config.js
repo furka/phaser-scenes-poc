@@ -1,5 +1,6 @@
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
 module.exports = {
   module: {
@@ -9,7 +10,17 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
-
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 99999999999999,
+            },
+          },
+        ],
+      },
       {
         test: /\.(scss|css|sass)$/,
         use: [
@@ -63,5 +74,8 @@ module.exports = {
     },
   },
 
-  plugins: [new HtmlWebpackPlugin()],
-}
+  plugins: [
+    new HtmlWebpackPlugin({ inlineSource: ".(js|css)$" }),
+    new HtmlWebpackInlineSourcePlugin(),
+  ],
+};
