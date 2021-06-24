@@ -22,7 +22,6 @@ const template = () =>
       <section>
         <h3>This is what the user sees when the app is running</h3>
         <p>Use the arrow keys to move the camera around:</p>
-        <p>PhaserJS does <strong>NOT</strong> support camera rotation</p>
         <div id="gameA"></div>
         <p>
           This is a representation of the camera within the world while the app
@@ -30,6 +29,27 @@ const template = () =>
         </p>
         <p>Note: that the user will never actually see this!</p>
         <div id="gameB"></div>
+      </section>
+      <section>
+        <h3>Limitations</h3>
+        <p>Some limitations were found along the way</p>
+        <ol>
+          <li>The camera <strong>cannot be rotated.</strong></li>
+          <li>The camera <strong>cannot be larger than the world.</strong></li>
+          <li>
+            Changing the size of the camera effectively causes the app to 'zoom'
+            in or out. (this has no effect on the actual size of the world)
+          </li>
+          <li>
+            Changing the aspect ratio of the camera will change the aspect ratio
+            of the app. (this has no effect on the actual size of the world)
+          </li>
+        </ol>
+        <p>
+          We may want to consider whether the user can define a different camera
+          aspect/ratio for each of their scenes, or whether they need to pick
+          one that will be shared across all scenes.
+        </p>
       </section>
       <section>
         <h3>This is what the user could see when the app is in edit mode:</h3>
